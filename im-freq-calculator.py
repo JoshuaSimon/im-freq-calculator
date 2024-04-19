@@ -1,4 +1,5 @@
 # im-freq-calculator.py
+from itertools import combinations
 from math import floor
 from typing import Optional
 
@@ -43,16 +44,17 @@ if __name__ == "__main__":
     f3 = 830.9
 
     # Define the orders of intermodulation that should be calculated.
-    im_orders = [1, 3, 5, 7]
+    im_orders = [3, 5, 7]
 
-    for order in im_orders:
-        im_left, im_right = calc_intermodulation(f1, f2, n=order)
-        print(f"IM{order} Left: {im_left}     IM{order} Right:{im_right}")
+    # Generate all combinations of length 2
+    frequencies = [f1, f2, f3]
+    combs = list(combinations(frequencies, 2))
 
-    for order in im_orders:
-        im_left, im_right = calc_intermodulation(f1, f3, n=order)
-        print(f"IM{order} Left: {im_left}     IM{order} Right:{im_right}")
-
-    for order in im_orders:
-        im_left, im_right = calc_intermodulation(f2, f3, n=order)
-        print(f"IM{order} Left: {im_left}     IM{order} Right:{im_right}")
+    for comb in combs:
+        f1 = comb[0]
+        f2 = comb[1]
+        print(f"Intermodulations for {f1} and {f2}:")
+        for order in im_orders:
+            im_left, im_right = calc_intermodulation(f1, f2, n=order)
+            print(f"IM{order} Left: {round(im_left, 3)}   IM{order} Right:{round(im_right, 3)}")
+        print("\n")
