@@ -1,11 +1,29 @@
 # im-freq-calculator.py
-
 from math import floor
 from typing import Optional
 
 
-
 def calc_intermodulation(f1: float, f2: float, n: Optional[int]=3) -> tuple[float, float]:
+    """ 
+    Calculates the n-th order intermodulation (IM)
+    frequencies for the given frequencies f1 and f2.
+
+    Parameters
+    ----------
+    f1 : float
+        The first frequency.
+    f2 : float
+        The second frequency.
+    n : int, optional
+        The order of the intermodulation.
+
+    Returns
+    -------
+    im_left : float
+        The intermodulation frequency for towards the left side of the band.
+    im_right : float
+        The intermodulation frequency for towards the right side of the band.
+    """
     i = floor(n/2)
     j = n - i
     im_left = j*f2 - i*f1
