@@ -17,8 +17,12 @@ if __name__ == "__main__":
     # IEM frequencies. These are the freqeuncies set are on the respective
     # IEM transimitters/recivers. These freqeuncies are fixed. 
     f1 = 864.9
-    f2 = 863.4
+    f2 = 863.5
     f3 = 823.1
+
+    f1 = 864.1
+    f2 = 826.5
+    f3 = 830.9
 
     # Define the orders of intermodulation that should be calculated.
     im_orders = [1, 3, 5, 7]
